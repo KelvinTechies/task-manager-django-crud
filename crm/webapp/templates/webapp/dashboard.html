@@ -1,0 +1,42 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<h5>Welcome to the Dashboard page! {{user}}</h5>
+<a href="{% url 'create_task' %}" class="btn btn-outline-primary btn-sm"
+  >Create a New Task</a
+>
+<hr />
+<table class="table table-bordered table-hover">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">View</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% if my_tasks %} {% for task in my_tasks %}
+
+    <tr>
+      <td>{{task.id}}</td>
+      <td>{{task.first_name}}</td>
+      <td>{{task.last_name}}</td>
+      <td>{{task.task}}</td>
+      <td>{{task.description}}</td>
+      <td>{{task.creation_date}}</td>
+      <td>
+        <a class="btn btn-success btn-sm" href="{% url 'singleTask' task.id %}"
+          ><i class="fa fa-eye text-light" aria-hidden="true"></i
+        ></a>
+      </td>
+    </tr>
+    {% endfor %} {% else %}
+    <h2>No Tasks Found</h2>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}

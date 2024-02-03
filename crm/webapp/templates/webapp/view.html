@@ -1,0 +1,22 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<div class="card">
+  <br />
+  <strong>{{task.first_name|upper}} {{task.last_name}}</strong>
+  <hr />
+  <div class="card-body">
+    <p><strong>ID:</strong>{{task.id}}</p>
+    <p><strong>Task:</strong>{{task.task}}</p>
+    <p><strong>Description:</strong>{{task.description}}</p>
+    <p><strong>Date Created:</strong>{{task.creation_date}}</p>
+  </div>
+</div>
+
+<br />
+
+<a href="{% url 'dashboard' %}" class="btn btn-secondary">Return</a>
+&nbsp;
+<a href="{% url 'update_task' task.id %}" class="btn btn-info">Update Record</a>
+&nbsp;
+<a href="{% url 'delete_task' task.id %}" class="btn btn-danger">Delete</a>
+&nbsp; {% endblock %}
